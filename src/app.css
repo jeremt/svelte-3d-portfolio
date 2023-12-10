@@ -5,13 +5,14 @@
     --font-body: 'Space Mono';
     --font-buttons: 'Space Mono';
     --color-fg: #eeeeee;
+    --color-bg: #1b1b1b;
     --color-dimmed: #b4b4b4;
-    --color-accent: #bdb48b;
+    --color-accent: #c8ae83;
     --color-accent-fg: #30302e;
 }
 
 body {
-    background-color: #1b1b1b;
+    background-color: var(--color-bg);
     margin: 0;
 }
 

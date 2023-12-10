@@ -2,11 +2,26 @@
     import {Canvas} from '@threlte/core';
     import Scene from '$lib/scene/Scene.svelte';
     import Scroller from '$lib/Scroller.svelte';
+    import {useProgress} from '@threlte/extras';
+    import {tweened} from 'svelte/motion';
+    // import {fade} from 'svelte/transition';
+    // import ProgressBar from '$lib/ProgressBar.svelte';
 
-    let progress = 0;
+    const {progress} = useProgress();
+    const tweenedProgress = tweened($progress, {
+        duration: 800,
+    });
+    $: tweenedProgress.set($progress);
+
+    let scroll = 0;
 </script>
 
-<Scroller bind:progress pages={3}>
+<svelte:head>
+    <title>Jeremie's Portfolio</title>
+    <meta name="description" content="Simple 3D Porfolio made with Threlve for pegadogique purposes" />
+</svelte:head>
+
+<Scroller bind:scroll pages={3}>
     <div id="page" slot="foreground">
         <header>
             <h1>Salut, I'm Jérémie!</h1>
@@ -18,13 +33,21 @@
             <a role="button" href="https://voltapp.tech/" target="_blank">See project</a>
         </section>
         <section id="codepassport">
-            <h2>CodePassport</h2>
-            <p>Code Passport is an interactive website to learn code (JS, HTML & CSS). I'm developping it on my spare time with my friend Vi.</p>
+            <h2>Code Passport</h2>
+            <p>
+                Code Passport is an interactive website to learn code (JS, HTML & CSS). I'm developping it on my spare time with my friend <a
+                    href="https://xvt.vercel.app">Vi</a
+                >.
+            </p>
             <a role="button" href="https://codepassport.dev" target="_blank">See project</a>
         </section>
         <section id="ttmc-for-devs">
             <h2>TTMC for devs</h2>
-            <p>Open-source board game inspired by the french board game ttmc repurposed to learn dev/tech concepts. Add your own cards here.</p>
+            <p>
+                Open-source board game inspired by the french board game ttmc repurposed to learn dev/tech concepts. Add your own cards <a
+                    href="https://ttmc-ui.vercel.app">here</a
+                >.
+            </p>
             <a role="button" href="https://ttmc-ui.vercel.app" target="_blank">See project</a>
         </section>
         <section id="contact">
@@ -55,9 +78,20 @@
         </section>
     </div>
     <Canvas>
-        <Scene {progress} />
+        <Scene {scroll} />
     </Canvas>
 </Scroller>
+
+<!-- {#if $tweenedProgress < 1}
+    <div
+        transition:fade|local={{
+            duration: 200,
+        }}
+        class="loading"
+    >
+        <ProgressBar progress={$tweenedProgress} />
+    </div>
+{/if} -->
 
 <style>
     header,
@@ -96,6 +130,11 @@
         font-family: var(--font-title);
         font-size: clamp(1.4rem, 4vw, 3rem);
         margin: 0;
+    }
+
+    p > a {
+        pointer-events: all;
+        color: var(--color-accent);
     }
 
     a[role='button'] {
@@ -161,4 +200,17 @@
     .social:hover {
         scale: 3;
     }
+    /* .loading {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: var(--color-bg);
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: center;
+        justify-content: center;
+    } */
 </style>

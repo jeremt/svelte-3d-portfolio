@@ -7,19 +7,19 @@
     /**
      * The current scroll progress value (between 0 and 1).
      */
-    export let progress = 0;
+    export let scroll = 0;
 
     let wrapperEl: HTMLDivElement;
 
     // update the scroll from outside
     $: if (wrapperEl) {
-        wrapperEl.scrollTop = progress * (wrapperEl.scrollHeight - wrapperEl.clientHeight);
+        wrapperEl.scrollTop = scroll * (wrapperEl.scrollHeight - wrapperEl.clientHeight);
     }
 
     function updateProgress(event: UIEvent) {
         const el = event.currentTarget as HTMLElement;
         if (el !== null) {
-            progress = Math.floor(el.scrollTop) / (el.scrollHeight - el.clientHeight);
+            scroll = Math.floor(el.scrollTop) / (el.scrollHeight - el.clientHeight);
         }
     }
 </script>
