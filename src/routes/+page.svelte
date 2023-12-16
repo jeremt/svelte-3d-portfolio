@@ -4,8 +4,6 @@
     import Scroller from '$lib/Scroller.svelte';
     import {useProgress} from '@threlte/extras';
     import {tweened} from 'svelte/motion';
-    // import {fade} from 'svelte/transition';
-    // import ProgressBar from '$lib/ProgressBar.svelte';
 
     const {progress} = useProgress();
     const tweenedProgress = tweened($progress, {
@@ -81,17 +79,6 @@
         <Scene {scroll} />
     </Canvas>
 </Scroller>
-
-<!-- {#if $tweenedProgress < 1}
-    <div
-        transition:fade|local={{
-            duration: 200,
-        }}
-        class="loading"
-    >
-        <ProgressBar progress={$tweenedProgress} />
-    </div>
-{/if} -->
 
 <style>
     header,
@@ -200,17 +187,4 @@
     .social:hover {
         scale: 3;
     }
-    /* .loading {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: var(--color-bg);
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        align-items: center;
-        justify-content: center;
-    } */
 </style>
