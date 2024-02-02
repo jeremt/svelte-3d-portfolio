@@ -2,7 +2,9 @@
 
 Work in progress 🚧
 
-## Steps
+Anyway, feel free to take my code and adapt it for your own porfolio 😉
+
+## Steps for (future) tutorial
 
 -   Create project
 -   Setup sveltekit
