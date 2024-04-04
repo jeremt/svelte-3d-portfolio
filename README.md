@@ -1,6 +1,10 @@
 # Svelte 3D Portfolio
 
-Work in progress 🚧
+Simple portfolio build with [Svelte](https://svelte.dev/) and [THREE.js](https://threejs.org/).
+
+![demo](https://github.com/jeremt/svelte-3d-portfolio/assets/1913169/542250c2-db9c-4d62-8632-79c6a87f34a7)
+
+This is not a "real" portfolio, I made it for educational purposes, also this is a work in progress 🚧
 
 Anyway, feel free to take my code and adapt it for your own porfolio 😉
 
